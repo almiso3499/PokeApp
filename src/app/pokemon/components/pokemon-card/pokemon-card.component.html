@@ -1,0 +1,13 @@
+<mat-card class="pokemonCard mat-elevation-z4">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{pokemon.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="pokemon.url" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions class="pokemonCard_actions">
+        <button mat-stroked-button>Edit</button>
+        <button mat-stroked-button color="warn">Delete</button>
+    </mat-card-actions>
+</mat-card>

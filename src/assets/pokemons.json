@@ -1,0 +1,20 @@
+{
+    "pokemons": [
+        {
+            "id": 1,
+            "name": "Bulbasur",
+            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        },
+        {
+            "id": 4,
+            "name": "Charmander",
+            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+        },
+        {
+            "id": 7,
+            "name": "Squirtle",
+            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+        }
+    ]
+}
+    

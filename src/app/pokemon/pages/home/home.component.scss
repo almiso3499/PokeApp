@@ -1,0 +1,15 @@
+.spinnerSection {
+    display: flex;
+    justify-content: center;
+}
+
+.cardSection {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    row-gap: 25px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+

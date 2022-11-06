@@ -1,0 +1,10 @@
+<section class="spinnerSection" *ngIf="(isLoading$ | async)">
+    <mat-spinner [diameter]="55"></mat-spinner>
+</section>
+<section *ngIf="!(isLoading$ | async)">
+    <section class="cardSection" *ngIf="pokemons | async as pokemonsData">
+        <ng-container *ngFor="let pokemonItem of pokemonsData">
+            <app-pokemon-card [pokemon]="pokemonItem"></app-pokemon-card>
+        </ng-container>
+    </section>
+</section>
