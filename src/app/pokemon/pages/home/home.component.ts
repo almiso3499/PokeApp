@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
+import { Pokemon } from '../../models/pokemon.model';
 import { AppState } from '../../state/app.state';
 import { loadPokemons } from '../../state/pokemon/pokemon.actions';
 import { selectAllPokemons } from '../../state/pokemon/pokemon.selectors';
-import { Pokemon } from '../../models/pokemon.model';
+import { selectPokemonsStatus } from './../../state/pokemon/pokemon.selectors';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,15 @@ import { Pokemon } from '../../models/pokemon.model';
 })
 export class HomeComponent implements OnInit {
 
-  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(true)
-  pokemons!: Observable<Array<Pokemon>>;
+  isLoading$!: Observable<boolean>;
+  pokemons$!: Observable<Array<Pokemon>>;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.pokemons = this.store.select(selectAllPokemons);
+    this.isLoading$ = this.store.select(selectPokemonsStatus);
+    this.pokemons$ = this.store.select(selectAllPokemons);
     this.store.dispatch(loadPokemons());
-    this.isLoading$.next(false); // TO DO isLoading with state 
   }
 
 }

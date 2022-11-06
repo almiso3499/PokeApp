@@ -6,13 +6,13 @@ import { Pokemon } from '../../models/pokemon.model';
 export interface PokemonState {
     Pokemons: Pokemon[];
     error: string;
-    status: 'initial' | 'pending' | 'loading' | 'error' | 'success';
+    isLoading: boolean;
 }
 
 export const initialState: PokemonState = {
     Pokemons: [],
     error: '',
-    status: 'initial'
+    isLoading: false
 };
 
 export const PokemonReducer = createReducer(
@@ -29,18 +29,18 @@ export const PokemonReducer = createReducer(
         Pokemons: state.Pokemons.filter((Pokemon) => Pokemon.id !== id),
     })),
     // Trigger loading the Pokemons
-    on(loadPokemons, (state) => ({ ...state, status: 'loading' })),
+    on(loadPokemons, (state) => ({ ...state, isLoading: true })),
     // Handle successfully loaded Pokemons
     on(loadPokemonsSuccess, (state, { pokemons }) => ({
         ...state,
         Pokemons: pokemons,
         error: '',
-        status: 'success',
+        isLoading: false,
     })),
     // Handle Pokemons load failure
     on(loadPokemonsFailure, (state, { error }) => ({
         ...state,
         error: error,
-        status: 'error',
+        isLoading: false,
     }))
 );
